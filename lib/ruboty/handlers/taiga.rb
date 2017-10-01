@@ -1,24 +1,25 @@
 module Ruboty
   module Handlers
     class Taiga < Base
-      env :TAIGA_USERNAME, "Pass taiga.io user name.", optional: false
-      env :TAIGA_PASSWORD, "Pass taiga.io password", optional: false
+      env :TAIGA_USERNAME, 'Pass taiga.io user name.', optional: false
+      env :TAIGA_PASSWORD, 'Pass taiga.io password', optional: false
 
       on(
         /auth/,
         name: 'auth',
-        description: "Auth with TAIGA_USERNAME,TAIGA_PASSWORD"
+        description: 'Auth with TAIGA_USERNAME,TAIGA_PASSWORD'
       )
 
       on(
         /issues search ((?<query>.+) |)on (?<project_slug>.+)/,
         name: 'search_issues',
-        description: "Search issues"
+        description: 'Search issues'
       )
 
-      on( /issues types on (?<project_slug>.+)/,
-         name: 'list_issue_types',
-         description: "Show issue types"
+      on(
+        /issues types on (?<project_slug>.+)/,
+        name: 'list_issue_types',
+        description: 'Show issue types'
       )
 
       def auth(message)

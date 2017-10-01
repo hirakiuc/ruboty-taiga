@@ -2,7 +2,7 @@ module Ruboty
   module Taiga
     module Actions
       class Base
-        NAMESPACE = 'taiga'
+        NAMESPACE = 'taiga'.freeze
 
         attr_reader :message
 
@@ -28,8 +28,8 @@ module Ruboty
           @access_token ||= memory[:token]
         end
 
-        def has_access_token?
-          !!access_token
+        def access_token?
+          !access_token.nil?
         end
 
         def client
@@ -37,11 +37,11 @@ module Ruboty
         end
 
         def auth_if_required
-          return if has_access_token?
+          return if access_token?
           auth!(verbose: false)
         end
 
-        def auth!(options = {verbose: true})
+        def auth!(options = {})
           client.login(ENV['TAIGA_USERNAME'], ENV['TAIGA_PASSWORD'])
           memory[:token] = Taigar.config.auth
 
