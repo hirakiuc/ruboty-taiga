@@ -28,6 +28,12 @@ module Ruboty
         description: 'Show issue severities'
       )
 
+      on(
+        /issues priorities on (?<project_slug>.+)/,
+        name: 'list_issue_priorities',
+        description: 'Show issue priorities'
+      )
+
       def auth(message)
         Ruboty::Taiga::Actions::Auth.new(message).call
       end
@@ -42,6 +48,10 @@ module Ruboty
 
       def list_issue_severities(message)
         Ruboty::Taiga::Actions::ListIssueSeverities.new(message).call
+      end
+
+      def list_issue_priorities(message)
+        Ruboty::Taiga::Actions::ListIssuePriorities.new(message).call
       end
     end
   end

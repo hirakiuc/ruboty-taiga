@@ -44,6 +44,8 @@ module Ruboty
             convert_type(value)
           when :watchers
             convert_member(value)
+          when :priority
+            convert_priority(value)
           else
             value
           end
@@ -70,6 +72,12 @@ module Ruboty
         def convert_member(value)
           found = project.members.find { |member| member.username == value }
           throw "No such member found: #{value}" if found.nil?
+          found.id
+        end
+
+        def convert_priority(value)
+          found = project.priorities.find { |priority| priority.name == value }
+          throw "No such priority found: #{value}" if found.nil?
           found.id
         end
       end
