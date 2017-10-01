@@ -16,12 +16,21 @@ module Ruboty
         description: "Search issues"
       )
 
+      on( /issues types on (?<project_slug>.+)/,
+         name: 'list_issue_types',
+         description: "Show issue types"
+      )
+
       def auth(message)
         Ruboty::Taiga::Actions::Auth.new(message).call
       end
 
       def search_issues(message)
         Ruboty::Taiga::Actions::SearchIssues.new(message).call(message[:query])
+      end
+
+      def list_issue_types(message)
+        Ruboty::Taiga::Actions::ListIssueTypes.new(message).call
       end
     end
   end
