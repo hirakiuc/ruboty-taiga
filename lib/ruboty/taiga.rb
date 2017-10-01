@@ -7,5 +7,6 @@ require 'ruboty/taiga/actions/base'
 require 'ruboty/taiga/actions/auth'
 require 'ruboty/taiga/actions/search_issues'
 require 'ruboty/taiga/actions/list_issue_types'
+require 'ruboty/taiga/actions/list_issue_severities'
 
 require 'ruboty/handlers/taiga'
