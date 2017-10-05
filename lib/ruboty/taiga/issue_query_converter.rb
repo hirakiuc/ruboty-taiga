@@ -92,7 +92,7 @@ module Ruboty
       def convert_limit(value)
         value.to_i
       rescue
-        15
+        DEFAULT_LIMIT
       end
     end
   end
