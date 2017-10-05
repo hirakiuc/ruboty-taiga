@@ -27,7 +27,7 @@ module Ruboty
         end.reduce(:merge)
 
         {
-          query: hash.select { |k,v| k != :limit },
+          query: hash.reject { |k, _| k == :limit },
           limit: (hash[:limit] || DEFAULT_LIMIT)
         }
       end
