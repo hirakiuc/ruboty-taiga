@@ -2,6 +2,7 @@ require 'taigar'
 
 require 'ruboty'
 require 'ruboty/taiga/version'
+require 'ruboty/taiga/issue_query_converter'
 
 require 'ruboty/taiga/actions/base'
 require 'ruboty/taiga/actions/auth'
