@@ -18,7 +18,8 @@ module Ruboty
       end
 
       def convert
-        return {} if (valid_query? == false || query_string.nil?)
+        return { query: {}, limit: DEFAULT_LIMIT } \
+          if (valid_query? == false || query_string.nil?)
 
         hash = query_string.split('&').map do |key_value|
           key, value = key_value.split('=')
