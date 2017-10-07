@@ -5,8 +5,12 @@ module Ruboty
         def call
           auth_if_required
 
-          project.priorities.each do |priority|
-            message.reply(format_priority(priority))
+          result = project.priorities.map { |priority| format_priority(priority) }
+
+          if result.empty?
+            message.reply('Not found.')
+          else
+            message.reply(result.join("\n"))
           end
         rescue => e
           message.reply("Failed to load project:#{message[:project_slug]}, #{e.message}")
